@@ -2,15 +2,12 @@ exports.middlewareGobal = (req, res, next) =>{
     next();
 }
 
-exports.meuSegundoMiddleware = (req, res, next) => {
-    console.log('Segundo middleware');
-    next();
-}
-
 exports.checkCsrfErro = (erro, req, res, next) => {
-    if(erro && 'EBADCSRFTOKEN' === erro.code){
+    if(erro){
         return res.render('404');
     }
+
+    next();
 }
 
 exports.csrfMiddleware = (req, res, next) => {
